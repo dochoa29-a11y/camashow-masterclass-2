@@ -658,7 +658,7 @@ const DAYS = [
       { j:"Mañana", name:"Bienvenida de Camashow y explicación del día 1", dur:15, act:"Camashow te da la bienvenida y te cuenta todo lo que vivirás hoy.", res:"Sabes qué te espera y cómo vas a aprovechar la jornada." },
       { j:"Mañana", name:"Historia de Camashow", dur:15, act:"Un relato cercano y conversacional, sin diapositivas cargadas.", res:"Descubres que ella también empezó desde cero." },
       { j:"Mañana", name:"Conversación con los creadores", dur:20, act:"Camashow conversa con 3 o 4 creadores y cierra con una reflexión sobre autenticidad y diferenciación.", res:"Reflexionas sobre tu identidad como creador." },
-      { j:"Mañana", name:"Invitado especial: charla de esquemas de iluminación", guest:"PHOTOBOX", dur:30, act:"PHOTOBOX te muestra esquemas de iluminación para tus contenidos.", res:"Conoces esquemas de iluminación que podrás aplicar en tus contenidos.", key:true },
+      { j:"Mañana", name:"Invitado especial: charla de esquemas de iluminación", guest:"PHOTOBOX", dur:30, act:"PHOTOBOX te muestra esquemas de iluminación para tus contenidos.", res:"Conocer el correcto manejo de la iluminación para mejorar la calidad en tus videos.", key:true },
       { j:"Mañana", name:"Preparación del proyecto", dur:20, act:"Recibes el material y creas tu proyecto.", tools:["Nuevo proyecto","importar","línea de tiempo","relación de aspecto"], res:"Tienes el material y tu proyecto listos para editar." },
       { j:"Mañana", name:"1. Edición y montaje", module:true, dur:35, act:"Camashow te muestra cada paso y tú lo replicas en tu celular.", tools:["Dividir","eliminar","recortar","reordenar"], res:"Montas tu primera secuencia de clips." },
       { j:"Mañana", name:"2. Ritmo y dinamismo", module:true, dur:25, act:"Deja tu video sin silencios y con al menos 2 zooms.", tools:["Velocidad","zoom/animación","eliminar silencios (AutoCut)"], res:"Tu video se siente dinámico." },
@@ -669,7 +669,7 @@ const DAYS = [
       { j:"Almuerzo", name:"Almuerzo", dur:60 },
       { j:"Tarde", name:"Preparación del contenido", dur:60, act:"¡Es tu momento de crear! Prepara y graba clips sobre el tema que prefieras, aplicando los conceptos y recomendaciones que aprendiste durante la jornada.", tools:["Cámara del celular"], res:"Tienes material propio para editar." },
       { j:"Tarde", name:"Edición por parte de cada creador", dur:90, act:"Editas tu video por tu cuenta, con el apoyo de Camashow y su equipo cuando lo necesites.", tools:["Todas las de la mañana"], res:"Tu video queda editado de principio a fin." },
-      { j:"Tarde", name:"Acabados y exportación", dur:30, act:"Exporta en 1080p / 30 fps y crea la portada de tu video.", tools:["Filtros","ajustes","exportar","portada"], res:"Tu video queda listo para publicar." },
+      { j:"Tarde", name:"Acabados y exportación", dur:30, act:"Exporta en la calidad indicada por Camashow y crea tu propia portada de video.", tools:["Filtros","ajustes","exportar","portada"], res:"Tu video queda listo para publicar." },
       { j:"Tarde", name:"Corrección del contenido", dur:20, act:"Camashow y su equipo revisan tu video y te sugieren mejoras.", res:"Tu video queda revisado y ajustado antes de la entrega." },
       { j:"Tarde", name:"Entrega de los videos finales", dur:10, act:"Entregas tu video final.", res:"Tu video queda listo para la premiación." },
       { j:"Noche", name:"Premiaciones del día 1", dur:30, pending:"Hora tentativa", act:"Se premian los videos según los criterios del reto.", res:"Te llevas toda la motivación para el día 2.", key:true }
@@ -834,7 +834,6 @@ function dayHTML(day) {
           <dl class="facts">
             <div><dt>Horario</dt><dd>${fmt(START_MIN)} – ${fmt(GENERAL_END)}</dd></div>
             <div><dt>Bloques</dt><dd>${day.count}</dd></div>
-            <div><dt>Sin almuerzo</dt><dd>${day.hours} h</dd></div>
             <div><dt>Invitado</dt><dd>${esc(day.guest)}</dd></div>
           </dl>
         </div>
