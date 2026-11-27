@@ -1,0 +1,11 @@
+# Configuración de despliegue en Netlify
+# Sitio estático: no requiere compilación. Netlify publica la raíz del repositorio.
+[build]
+  publish = "."
+  command = ""
+
+# Caché larga para imágenes (no cambian); el HTML siempre se sirve actualizado.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

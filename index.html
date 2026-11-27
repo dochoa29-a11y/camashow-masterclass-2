@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camashow Masterclass 2.0 · Itinerario</title>
+<meta name="description" content="Itinerario de las dos jornadas de Camashow Masterclass 2.0.">
+
+<!-- Tipografía complementaria (opcional: si no carga, se usan las alternativas locales definidas en --font-sans).
+     El lettering de marca NO es una fuente: se usa el logotipo original recortado (carpeta assets/). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   1. VARIABLES DEL SISTEMA VISUAL
+   ========================================================= */
+:root {
+  /* Rosas pastel */
+  --rose-25:  #fffafc;
+  --rose-50:  #fff4f8;
+  --rose-100: #fde9f1;
+  --rose-200: #f9d6e5;
+  --rose-300: #f4bfd6;
+  --rose-400: #eaa3c3;   /* acento suave: solo en detalles finos */
+  --rose-ink: #c46f98;   /* rosa legible para etiquetas pequeñas */
+
+  /* Azul baby y lila (matices del tornasol) */
+  --blue-100: #e4f1fd;
+  --blue-200: #cfe5fb;
+  --blue-300: #b5d6f5;
+  --blue-ink: #5f8fbf;
+  --lilac-100: #efe7fd;
+  --lilac-200: #e1d3f9;
+
+  /* Texto */
+  --ink-900: #4a2e43;
+  --ink-700: #6b4d62;
+  --ink-500: #957a8c;
+  --ink-300: #c9b4c1;
+
+  /* Superficies */
+  --glass:        rgba(255, 255, 255, .62);
+  --glass-strong: rgba(255, 255, 255, .82);
+  --line:         rgba(214, 160, 190, .28);
+
+  /* Degradados holográficos */
+  --holo: linear-gradient(115deg, #fbd5e6 0%, #f3dcf7 22%, #d6e8fc 42%, #fde4ef 60%, #e4d8fb 78%, #cfe5fb 100%);
+  --holo-line: linear-gradient(90deg, #f6bcd6, #e2d3f9, #b9d8f6, #f9d0e3, #f6bcd6);
+  --holo-text: linear-gradient(100deg,
+      #ee9fc5 0%, #f7c6dd 14%, #fdf0f7 24%, #b3d4f5 38%,
+      #d9c6f6 50%, #f0a9ca 64%, #fdf0f7 76%, #a6cdf3 88%, #ee9fc5 100%);
+
+  /* Material holográfico: lámina iridiscente + brillo perlado + bisel */
+  --foil: conic-gradient(from var(--foil-rot, 200deg) at 50% 50%,
+      #fbd3e6, #f1d9fb, #cfe4fb, #fde9f3, #dccdf8, #c4dffb, #f8cde1, #fbd3e6);
+  --pearl: radial-gradient(130% 90% at var(--mx, 22%) var(--my, 0%), rgba(255,255,255,.95) 0%, rgba(255,255,255,.35) 28%, rgba(255,255,255,0) 55%);
+  --foil-edge: linear-gradient(var(--edge-rot, 120deg), #ffffff 0%, #f5bfd8 18%, #e0d0fa 36%, #b7d7f6 52%, #ffffff 62%, #f3c3da 80%, #cfe4fb 100%);
+  --bevel: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(186, 150, 210, .35), inset 0 0 0 1px rgba(255,255,255,.35);
+
+  /* Lettering de marca (imágenes originales): se suaviza para mantener la paleta pastel */
+  --lettering-filter: saturate(.74) brightness(1.07) contrast(.97);
+  --lettering-depth: drop-shadow(0 2px 1px rgba(255,255,255,.9)) drop-shadow(0 14px 26px rgba(205, 130, 175, .32));
+
+  /* Tipografía */
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Escala de espaciado (base 4px) */
+  --s-1: .25rem; --s-2: .5rem;  --s-3: .75rem; --s-4: 1rem;
+  --s-5: 1.5rem; --s-6: 2rem;   --s-7: 3rem;   --s-8: 4rem;
+  --s-9: 6rem;   --s-10: 8rem;
+
+  /* Escala tipográfica */
+  --t-xs: .75rem; --t-sm: .875rem; --t-md: 1rem; --t-lg: 1.25rem;
+  --t-xl: 1.6rem;
+
+  /* Radios y sombras */
+  --r-sm: 10px; --r-md: 18px; --r-lg: 28px; --r-pill: 999px;
+  --shadow-soft: 0 10px 40px -18px rgba(196, 111, 152, .35);
+  --shadow-card: 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 50px -30px rgba(150, 110, 170, .45);
+
+  --maxw: 1320px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--t-md);
+  line-height: 1.55;
+  color: var(--ink-700);
+  background:
+    radial-gradient(1200px 600px at 85% 10%, rgba(207, 229, 251, .55), transparent 60%),
+    radial-gradient(900px 700px at 0% 60%, rgba(249, 214, 229, .7), transparent 60%),
+    var(--rose-50);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.wrap { width: min(100% - 2 * var(--s-6), var(--maxw)); margin-inline: auto; }
+
+/* ---------- Lettering de marca (logotipo y títulos originales) ----------
+   Capa 1: imagen original suavizada a la paleta pastel, con profundidad.
+   Capa 2 (iris): la misma imagen desplazada hacia lila/azul baby, visible
+   solo donde "incide la luz" (sigue al puntero).
+   Capa 3 (sheen): reflejo perlado que barre las letras periódicamente.
+   Las máscaras son degradados CSS, así que funcionan también abriendo el
+   archivo directamente (file://). */
+@property --sx { syntax: "<percentage>"; inherits: true; initial-value: -40%; }
+.lettering { position: relative; display: inline-block; line-height: 0; --mx: 30%; --my: 25%; }
+.lettering img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+.lettering__base { filter: var(--lettering-filter) var(--lettering-depth); }
+.lettering__iris, .lettering__sheen { position: absolute; inset: 0; height: 100% !important; pointer-events: none; }
+.lettering__iris {
+  filter: saturate(.62) hue-rotate(-62deg) brightness(1.12);
+  -webkit-mask-image: radial-gradient(42% 70% at var(--mx) var(--my), #000 0%, rgba(0,0,0,.55) 45%, transparent 75%);
+          mask-image: radial-gradient(42% 70% at var(--mx) var(--my), #000 0%, rgba(0,0,0,.55) 45%, transparent 75%);
+  opacity: .78; transition: opacity .6s var(--ease);
+}
+.lettering__sheen {
+  filter: saturate(.25) brightness(1.75) hue-rotate(-40deg);
+  mix-blend-mode: screen; opacity: .8;
+  -webkit-mask-image: linear-gradient(108deg, transparent calc(var(--sx) - 12%), #000 var(--sx), transparent calc(var(--sx) + 10%));
+          mask-image: linear-gradient(108deg, transparent calc(var(--sx) - 12%), #000 var(--sx), transparent calc(var(--sx) + 10%));
+  animation: sheen 7.5s var(--ease) infinite;
+}
+@keyframes sheen { 0% { --sx: -40%; } 55%, 100% { --sx: 150%; } }
+
+/* Destello: estrella de cuatro puntas */
+.sparkle { position: absolute; width: 28px; height: 28px; color: #fff; pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,.95)) drop-shadow(0 0 14px rgba(190, 220, 250, .9));
+  animation: twinkle 4.5s var(--ease) infinite; }
+@keyframes twinkle { 0%,100% { opacity: .95; transform: scale(1) rotate(0deg);} 50% { opacity: .55; transform: scale(.78) rotate(12deg);} }
+
+/* Etiqueta pequeña en versalitas */
+.eyebrow {
+  font-size: var(--t-xs); font-weight: 800; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--rose-ink);
+}
+
+/* =========================================================
+   3. NAVEGACIÓN
+   ========================================================= */
+.nav {
+  position: fixed; inset: var(--s-4) 0 auto; z-index: 50;
+  display: flex; justify-content: center; pointer-events: none;
+}
+.nav__inner {
+  pointer-events: auto;
+  display: flex; align-items: center; gap: var(--s-2);
+  padding: var(--s-2) var(--s-2) var(--s-2) var(--s-5);
+  background: var(--glass-strong);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-soft);
+  opacity: 0; transform: translateY(-12px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.nav.is-visible .nav__inner { opacity: 1; transform: none; }
+.nav__brand { display: block; margin-right: var(--s-3); line-height: 0; }
+.nav__brand img { height: 30px; width: auto; filter: var(--lettering-filter); }
+.nav__link {
+  text-decoration: none; font-weight: 700; font-size: var(--t-sm); color: var(--ink-500);
+  padding: var(--s-2) var(--s-4); border-radius: var(--r-pill);
+  transition: color .25s, background .25s;
+}
+.nav__link:hover { color: var(--ink-900); }
+.nav__link[aria-current="true"] { color: var(--ink-900); background: var(--pearl), var(--foil); box-shadow: var(--bevel); }
+
+/* =========================================================
+   4. PORTADA
+   ========================================================= */
+.hero {
+  position: relative; min-height: 100vh; min-height: 100svh;
+  display: grid; place-items: center;
+  overflow: hidden; isolation: isolate;
+  padding: var(--s-9) 0 var(--s-8);
+}
+.hero__bg {
+  position: absolute; inset: 0; z-index: -2;
+  background: url("Imagenes%20de%20referencia/Escenario%20pastel%20con%20cintas%20hologr%C3%A1ficas.png") center / cover no-repeat, var(--rose-200);
+}
+.hero::after { /* velo para suavizar el rosa y asegurar legibilidad */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(60% 50% at 50% 42%, rgba(255,250,252,.55), transparent 70%),
+    linear-gradient(180deg, rgba(255,244,248,.25) 0%, rgba(255,244,248,.15) 55%, var(--rose-50) 100%);
+}
+.hero__content { text-align: center; position: relative; }
+.hero__eyebrow { margin: 0 0 var(--s-5); color: var(--ink-700); }
+
+.wordmark { margin: 0 auto; width: min(720px, 88vw, 92vh); position: relative; }
+.wordmark .lettering { width: 100%; }
+
+.hero__meta {
+  margin: var(--s-6) auto 0;
+  display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--s-3) var(--s-5);
+  font-weight: 700; color: var(--ink-700); font-size: var(--t-md);
+}
+.hero__meta span + span::before { content: "·"; margin-right: var(--s-5); color: var(--rose-400); }
+
+.hero__days {
+  margin-top: var(--s-7);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); gap: var(--s-4); justify-content: center;
+}
+.day-card {
+  position: relative; display: block; text-align: left; text-decoration: none;
+  padding: var(--s-5) var(--s-5) var(--s-5);
+  border-radius: var(--r-md);
+  background: linear-gradient(var(--glass), var(--glass)) padding-box, var(--foil-edge) border-box;
+  border: 1.5px solid transparent;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--bevel), var(--shadow-card);
+  overflow: hidden; isolation: isolate;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.day-card > * { position: relative; z-index: 1; }
+.day-card__num { position: relative; z-index: 1; }
+.day-card:hover { transform: translateY(-3px); box-shadow: var(--bevel), 0 24px 60px -30px rgba(150, 110, 170, .6); }
+.day-card__num {
+  float: right; margin: -.12em 0 0 var(--s-3);
+  font-size: 2.6rem; font-weight: 800; line-height: 1; letter-spacing: -.04em;
+  background: linear-gradient(150deg, #e597be 0%, #f6c6dc 28%, #c3a9ec 50%, #8fbbe8 72%, #e9a2c6 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.95)) drop-shadow(0 6px 10px rgba(180, 150, 220, .35));
+}
+
+/* Lámina holográfica interactiva: el reflejo y el tono cambian con la posición del puntero */
+[data-foil]::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none;
+  background: var(--pearl), var(--foil);
+  opacity: .42; mix-blend-mode: multiply;
+  transition: opacity .5s var(--ease);
+}
+[data-foil]::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.75) 46%, rgba(207, 228, 251, .55) 52%, transparent 66%);
+  background-size: 260% 100%; background-position: var(--sheen-x, 100%) 0;
+  mix-blend-mode: screen; opacity: .85;
+}
+[data-foil]:hover::before { opacity: .6; }
+.day-card__title { margin: var(--s-1) 0 var(--s-1); font-size: var(--t-lg); font-weight: 800; color: var(--ink-900); line-height: 1.25; }
+.day-card__sub { margin: 0; font-size: var(--t-sm); color: var(--ink-500); }
+
+.scroll-cue { position: absolute; left: 50%; bottom: var(--s-5); transform: translateX(-50%);
+  width: 22px; height: 36px; border: 1.5px solid rgba(149, 122, 140, .45); border-radius: 12px; }
+.scroll-cue::after { content: ""; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px;
+  border-radius: 2px; background: var(--rose-400); animation: cue 2.2s var(--ease) infinite; }
+@keyframes cue { 0% { opacity: 0; transform: translateY(0);} 30% { opacity: 1;} 100% { opacity: 0; transform: translateY(12px);} }
+
+/* Anfitriona: foto de Camashow en marco holográfico */
+.host { padding: var(--s-9) 0 0; }
+.host__inner {
+  display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--s-8);
+  align-items: center; max-width: 920px; margin-inline: auto;
+}
+.host__photo {
+  position: relative; margin: 0; padding: 10px;
+  border-radius: var(--r-lg, 28px);
+  background: linear-gradient(var(--glass), var(--glass)) padding-box, var(--foil-edge) border-box;
+  border: 1.5px solid transparent;
+  box-shadow: var(--bevel), var(--shadow-card);
+  overflow: hidden; isolation: isolate;
+}
+.host__photo img {
+  position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: calc(var(--r-lg, 28px) - 10px);
+  filter: saturate(.82) brightness(1.04);
+}
+.host__photo .host__tint { /* suaviza el fondo fucsia de la foto hacia la paleta pastel */
+  position: absolute; inset: 10px; z-index: 2; pointer-events: none;
+  border-radius: calc(var(--r-lg, 28px) - 10px);
+  background: linear-gradient(160deg, rgba(246, 198, 220, .55) 0%, rgba(195, 169, 236, .25) 50%, rgba(143, 187, 232, .45) 100%);
+  mix-blend-mode: screen; opacity: .5;
+}
+.host__photo::after { z-index: 3; }
+.host__text .eyebrow { color: var(--ink-500); }
+.host__name {
+  margin: var(--s-2) 0 var(--s-3); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1; letter-spacing: -.03em;
+  background: linear-gradient(150deg, #e597be 0%, #f6c6dc 28%, #c3a9ec 50%, #8fbbe8 72%, #e9a2c6 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.95)) drop-shadow(0 6px 10px rgba(180, 150, 220, .35));
+}
+.host__line { margin: 0; font-size: 1.05rem; color: var(--ink-700); max-width: 40ch; }
+@media (max-width: 760px) {
+  .host__inner { grid-template-columns: 1fr; gap: var(--s-5); text-align: center; }
+  .host__photo { width: min(100%, 320px); margin-inline: auto; }
+  .host__line { margin-inline: auto; }
+}
+
+/* =========================================================
+   5. SECCIÓN DE DÍA
+   ========================================================= */
+.day { position: relative; padding: var(--s-10) 0 var(--s-9); scroll-margin-top: var(--s-6); }
+.day + .day { padding-top: var(--s-8); }
+
+.day__head {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--s-7);
+  align-items: end; margin-bottom: var(--s-7);
+}
+.day--mirror .day__head { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+.day--mirror .day__title-block { order: 2; text-align: right; }
+.day--mirror .day__intro { order: 1; }
+
+.day__title-block { position: relative; }
+.day__title { margin: var(--s-3) 0 var(--s-2); line-height: 0; }
+.day__title .lettering { width: clamp(290px, 40vw, 580px); }
+.day--mirror .day__title { display: flex; justify-content: flex-end; }
+.day__subtitle { margin: var(--s-2) 0 0; font-size: var(--t-xl); font-weight: 800; color: var(--ink-900); letter-spacing: -.01em; line-height: 1.2; }
+
+.day__intro { padding-bottom: var(--s-3); }
+.day__objective { margin: var(--s-2) 0 var(--s-5); font-size: 1.05rem; color: var(--ink-700); max-width: 52ch; }
+.facts { display: flex; flex-wrap: wrap; gap: var(--s-6); margin: 0; }
+.facts div { min-width: 0; }
+.facts dt { font-size: var(--t-xs); font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-500); }
+.facts dd { margin: var(--s-1) 0 0; font-weight: 800; color: var(--ink-900); font-size: var(--t-lg); line-height: 1.2; }
+
+/* ---------- Barra proporcional de la jornada ---------- */
+.span { margin-bottom: var(--s-7); }
+.span__track {
+  display: flex; height: 54px; border-radius: var(--r-sm); overflow: hidden;
+  background: rgba(255,255,255,.5);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.9) inset, var(--shadow-soft);
+}
+.span__seg {
+  position: relative; border: 0; padding: 0; margin: 0; cursor: pointer; min-width: 3px;
+  background: var(--seg-bg); font: inherit;
+  border-right: 1px solid rgba(255,255,255,.85);
+  transition: filter .25s, transform .25s;
+}
+.span__seg:last-child { border-right: 0; }
+.span__seg:hover, .span__seg:focus-visible, .span__seg.is-hot { filter: brightness(1.06) saturate(1.15); outline: none; }
+.span__seg:focus-visible { box-shadow: 0 0 0 2px var(--ink-700) inset; }
+.span__seg[data-j="Mañana"] { --seg-bg: linear-gradient(180deg, #fbdcea, #f5c4da); }
+.span__seg[data-j="Tarde"]  { --seg-bg: linear-gradient(180deg, #e2effd, #c6dff8); }
+.span__seg[data-j="Noche"]  { --seg-bg: radial-gradient(120% 90% at 30% 0%, rgba(255,255,255,.9), transparent 55%), conic-gradient(from 160deg at 50% 60%, #f7c9de, #e2d3f9, #bcdaf6, #fde4ef, #f7c9de); }
+.span__seg[data-j="Almuerzo"] { --seg-bg: repeating-linear-gradient(135deg, rgba(255,255,255,.95) 0 6px, rgba(244,214,229,.6) 6px 12px); cursor: default; }
+.span__seg span { position: absolute; left: 8px; right: 6px; bottom: 6px; font-size: 11px; font-weight: 800; color: rgba(74,46,67,.6); text-align: left;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+.span__ticks { position: relative; height: 22px; margin-top: var(--s-2); }
+.span__ticks span { position: absolute; transform: translateX(-50%); font-size: var(--t-xs); font-weight: 700; color: var(--ink-500); white-space: nowrap; }
+.span__ticks span:first-child { transform: none; }
+.span__ticks span:last-child { transform: translateX(-100%); }
+.span__legend { display: flex; flex-wrap: wrap; gap: var(--s-5); margin-top: var(--s-2); font-size: var(--t-sm); font-weight: 700; color: var(--ink-500); }
+.span__legend i { display: inline-block; width: 12px; height: 12px; border-radius: 4px; margin-right: var(--s-2); vertical-align: -1px; }
+.span__tip {
+  position: fixed; z-index: 60; pointer-events: none;
+  padding: var(--s-2) var(--s-3); border-radius: var(--r-sm);
+  background: var(--glass-strong); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: var(--shadow-soft);
+  font-size: var(--t-sm); color: var(--ink-900); font-weight: 700; max-width: 280px;
+  opacity: 0; transform: translate(-50%, calc(-100% - 10px)); transition: opacity .15s;
+}
+.span__tip small { display: block; font-weight: 600; color: var(--ink-500); }
+.span__tip.is-on { opacity: 1; }
+
+/* ---------- Columnas: Bloque 1 | almuerzo | Bloque 2 ---------- */
+.board {
+  display: grid; grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr); gap: var(--s-5);
+  align-items: start;
+}
+.block {
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(255,255,255,.55), transparent 60%) padding-box,
+    linear-gradient(var(--glass), var(--glass)) padding-box,
+    var(--foil-edge) border-box;
+  border: 1.5px solid transparent;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--bevel), var(--shadow-card);
+  padding: var(--s-6) var(--s-5) var(--s-4);
+}
+.block__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); padding: 0 var(--s-2) var(--s-4); border-bottom: 1px solid var(--line); }
+.block__name { margin: 0; font-size: var(--t-lg); font-weight: 800; color: var(--ink-900); }
+.block__hours { font-size: var(--t-sm); font-weight: 700; color: var(--ink-500); white-space: nowrap; }
+
+.phase-label { display: flex; align-items: center; gap: var(--s-3); margin: var(--s-5) var(--s-2) var(--s-2); }
+.phase-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.lunch {
+  position: sticky; top: 50vh;
+  display: grid; place-items: center; align-self: stretch;
+}
+.lunch__pill {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  padding: var(--s-5) var(--s-3);
+  border-radius: var(--r-pill);
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,.9) 0 7px, rgba(249, 214, 229, .65) 7px 14px);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: var(--shadow-soft);
+  font-weight: 800; font-size: var(--t-sm); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-700);
+  white-space: nowrap;
+}
+.lunch__pill b { font-weight: 800; letter-spacing: .14em; color: var(--rose-ink); margin-bottom: var(--s-3); }
+
+/* ---------- Ítems del itinerario ---------- */
+.items { list-style: none; margin: 0; padding: 0; }
+.item { position: relative; }
+.item + .item { border-top: 1px solid rgba(214, 160, 190, .16); }
+.item details { border-radius: var(--r-md); transition: background .3s var(--ease); }
+.item details[open], .item.is-hot details { background: rgba(255,255,255,.7); }
+.item summary {
+  list-style: none; cursor: pointer;
+  display: grid; grid-template-columns: 100px 18px minmax(0, 1fr) auto; align-items: center; gap: var(--s-3);
+  padding: var(--s-3) var(--s-2);
+  border-radius: var(--r-md);
+}
+.item summary::-webkit-details-marker { display: none; }
+.item summary:focus-visible { outline: 2px solid var(--rose-400); outline-offset: 2px; }
+.item summary:hover .item__name { color: var(--ink-900); }
+
+.item__time { text-align: right; line-height: 1.1; }
+.item__start { display: block; font-weight: 800; font-size: 1.05rem; color: var(--ink-900); font-variant-numeric: tabular-nums; }
+.item__start small { font-size: .68rem; font-weight: 700; color: var(--ink-500); margin-left: 2px; }
+.item__end { display: block; font-size: var(--t-xs); font-weight: 600; color: var(--ink-500); font-variant-numeric: tabular-nums; margin-top: 2px; white-space: nowrap; }
+
+.item__dot { width: 12px; height: 12px; border-radius: 50%; justify-self: center;
+  background: var(--holo); box-shadow: 0 0 0 3px rgba(255,255,255,.95), 0 0 0 4px rgba(214, 160, 190, .3); }
+.item--module .item__dot { background: linear-gradient(135deg, #f7c3db, #bcdaf6); }
+.item--key .item__dot { width: 15px; height: 15px;
+  background: radial-gradient(circle at 32% 28%, #fff 0 18%, rgba(255,255,255,0) 42%), conic-gradient(from 30deg, #f7c3db, #e2d3f9, #bcdaf6, #fde4ef, #f7c3db);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.95), 0 0 0 4px rgba(214, 160, 190, .35), 0 0 14px 3px rgba(188, 218, 246, .85); }
+
+.item__main { min-width: 0; }
+.item__name { display: block; font-weight: 700; color: var(--ink-700); line-height: 1.3; transition: color .2s; }
+.item__num { display: inline-block; min-width: 1.6em; font-weight: 800; color: var(--rose-ink); }
+.day--2 .item__num { color: var(--blue-ink); }
+.item__tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: 4px; }
+.tag { font-size: 11px; font-weight: 800; letter-spacing: .04em; padding: 2px 8px; border-radius: var(--r-pill); background: var(--rose-100); color: var(--ink-700); }
+.tag--dur { background: transparent; padding-left: 0; color: var(--ink-500); font-weight: 700; }
+.tag--guest { background: var(--blue-100); color: #4f7aa6; }
+.tag--pending { background: transparent; border: 1px dashed var(--rose-400); color: var(--rose-ink); }
+
+.item__chev { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; color: var(--ink-500);
+  transition: transform .3s var(--ease), background .3s; }
+.item__chev svg { width: 12px; height: 12px; }
+.item details[open] .item__chev { transform: rotate(180deg); background: var(--rose-100); }
+
+.item__body {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--s-4) var(--s-5);
+  padding: var(--s-1) var(--s-4) var(--s-4) calc(100px + 18px + 2 * var(--s-3) + var(--s-2));
+  font-size: var(--t-sm); color: var(--ink-700);
+}
+.item__body h4 { margin: 0 0 var(--s-1); font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-500); }
+.item__body p { margin: 0; }
+.item__body p + .item__steps { margin-top: var(--s-2); }
+.item__steps { margin: 0; padding-left: 1.2em; }
+.item__steps li + li { margin-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: var(--r-pill);
+  background: linear-gradient(#fff, #fff) padding-box, var(--holo-line) border-box; border: 1px solid transparent; color: var(--ink-700); }
+.item details[open] .item__body { animation: reveal .35s var(--ease); }
+@keyframes reveal { from { opacity: 0; transform: translateY(-4px);} to { opacity: 1; transform: none;} }
+
+.block__foot { display: flex; justify-content: flex-end; padding: var(--s-3) var(--s-2) 0; }
+.toggle-all { font: inherit; font-size: var(--t-xs); font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-500); background: none; border: 0; padding: var(--s-2); cursor: pointer; border-radius: var(--r-sm); }
+.toggle-all:hover { color: var(--ink-900); }
+.toggle-all:focus-visible { outline: 2px solid var(--rose-400); }
+
+.day__note { margin: var(--s-5) var(--s-2) 0; font-size: var(--t-sm); color: var(--ink-500); }
+
+/* Separador entre días */
+.divider { display: flex; align-items: center; justify-content: center; gap: var(--s-4); }
+.divider::before, .divider::after { content: ""; height: 1px; width: min(30vw, 360px); background: var(--holo-line); opacity: .9; }
+.divider svg { width: 18px; height: 18px; color: #fff; filter: drop-shadow(0 0 6px rgba(188, 218, 246, 1)) drop-shadow(0 0 2px rgba(234, 163, 195, 1)); }
+
+/* =========================================================
+   6. CIERRE
+   ========================================================= */
+.closing {
+  position: relative; overflow: hidden; isolation: isolate;
+  text-align: center; padding: var(--s-10) 0 var(--s-8);
+}
+.closing__bg { position: absolute; inset: 0; z-index: -2;
+  background: url("Imagenes%20de%20referencia/Fondo%20hologr%C3%A1fico%20rosa%20pastel%20con%20destellos.png") center 70% / cover no-repeat; }
+.closing::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, var(--rose-50) 0%, rgba(255,244,248,.55) 45%, rgba(255,244,248,.35) 100%); }
+.closing__mark { margin: 0 auto; width: clamp(240px, 30vw, 420px); }
+.closing__mark .lettering { width: 100%; }
+.closing__line { margin: var(--s-4) 0 0; font-weight: 700; color: var(--ink-700); }
+
+/* =========================================================
+   7. ANIMACIÓN DE ENTRADA
+   ========================================================= */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-in { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* =========================================================
+   8. RESPONSIVE
+   ========================================================= */
+@media (max-width: 1080px) {
+  .board { grid-template-columns: 1fr; }
+  .lunch { position: static; }
+  .lunch__pill { writing-mode: horizontal-tb; transform: none; display: flex; align-items: baseline; gap: var(--s-3); }
+  .lunch__pill b { margin: 0; }
+}
+@media (max-width: 860px) {
+  .day__head, .day--mirror .day__head { grid-template-columns: 1fr; gap: var(--s-5); }
+  .day--mirror .day__title-block { order: 0; text-align: left; }
+  .day--mirror .day__title { justify-content: flex-start; }
+  .day__title .lettering { width: min(100%, 520px); }
+  .hero__days { grid-template-columns: minmax(0, 420px); }
+  .span__seg span { display: none; }
+  .nav__brand { display: none; }
+  .nav__inner { padding-left: var(--s-2); }
+}
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 2 * var(--s-4), var(--maxw)); }
+  .block { padding: var(--s-5) var(--s-2) var(--s-3); border-radius: var(--r-md); }
+  .item summary { grid-template-columns: 88px 14px minmax(0, 1fr) auto; gap: var(--s-2); }
+  .item__body { padding-left: var(--s-4); }
+  .hero__meta { flex-direction: column; gap: var(--s-1); }
+  .hero__meta span + span::before { display: none; }
+  .facts { gap: var(--s-5); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
+@media print {
+  .nav, .scroll-cue, .toggle-all { display: none; }
+  .reveal { opacity: 1; transform: none; }
+  .hero { min-height: auto; }
+}
+</style>
+</head>
+
+<body class="no-js">
+
+<!-- Símbolos SVG reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sparkle" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 0c.6 6.4 3.2 9.6 12 12-8.8 2.4-11.4 5.6-12 12-.6-6.4-3.2-9.6-12-12 8.8-2.4 11.4-5.6 12-12z"/>
+  </symbol>
+  <symbol id="i-chev" viewBox="0 0 12 12">
+    <path d="M2 4.5 6 8l4-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- NAVEGACIÓN -->
+<nav class="nav" aria-label="Secciones">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#inicio"><img src="assets/camashow-masterclass-logo.webp" alt="Camashow Masterclass 2.0 — inicio"></a>
+    <a class="nav__link" href="#dia-1">Día 1</a>
+    <a class="nav__link" href="#dia-2">Día 2</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- PORTADA -->
+  <header class="hero" id="inicio">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__content wrap">
+      <p class="eyebrow hero__eyebrow">Itinerario · Edición en CapCut</p>
+
+      <h1 class="wordmark">
+        <span class="lettering" data-light>
+          <img class="lettering__base" src="assets/camashow-masterclass-logo.webp" width="1523" height="919" alt="Camashow Masterclass 2.0">
+          <img class="lettering__iris" src="assets/camashow-masterclass-logo.webp" alt="" aria-hidden="true">
+          <img class="lettering__sheen" src="assets/camashow-masterclass-logo.webp" alt="" aria-hidden="true">
+        </span>
+      </h1>
+
+      <p class="hero__meta">
+        <span>2 jornadas</span>
+        <span>8:00 a. m. – 6:00 p. m.</span>
+      </p>
+
+      <div class="hero__days">
+        <a class="day-card day-card--1" href="#dia-1" data-foil>
+          <span class="day-card__num" aria-hidden="true">1</span>
+          <span class="eyebrow">Día 1</span>
+          <p class="day-card__title">Fundamentos</p>
+          <p class="day-card__sub">De cero a un video completo</p>
+        </a>
+        <a class="day-card day-card--2" href="#dia-2" data-foil>
+          <span class="day-card__num" aria-hidden="true">2</span>
+          <span class="eyebrow">Día 2</span>
+          <p class="day-card__title">Avanzado</p>
+          <p class="day-card__sub">Transiciones top, efectos, hooks de videos y sonido</p>
+        </a>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </header>
+
+  <!-- ANFITRIONA -->
+  <section class="host" aria-labelledby="host-t">
+    <div class="host__inner wrap">
+      <figure class="host__photo" data-foil>
+        <img src="assets/camashow-foto.jpg" width="960" height="1200" alt="Camashow sosteniendo una claqueta de cine" loading="lazy">
+        <span class="host__tint" aria-hidden="true"></span>
+      </figure>
+      <div class="host__text">
+        <span class="eyebrow">Anfitriona</span>
+        <h2 class="host__name" id="host-t">Camashow</h2>
+        <p class="host__line">Juliana Camacho, conocida en redes sociales como Camashow, te acompañará durante las dos jornadas de CAMASHOW MASTERCLASS 2.0 como mentora de todo el evento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Los dos días se generan desde los datos del Excel (ver script) -->
+  <div id="days"></div>
+
+  <!-- CIERRE -->
+  <footer class="closing">
+    <div class="closing__bg" aria-hidden="true"></div>
+    <p class="closing__mark">
+      <span class="lettering">
+        <img class="lettering__base" src="assets/camashow-masterclass-logo.webp" width="1523" height="919" alt="Camashow Masterclass 2.0" loading="lazy">
+        <img class="lettering__sheen" src="assets/camashow-masterclass-logo.webp" alt="" aria-hidden="true" loading="lazy">
+      </span>
+    </p>
+    <p class="closing__line">Día 1 · Fundamentos &nbsp;—&nbsp; Día 2 · Avanzado</p>
+  </footer>
+</main>
+
+<div class="span__tip" id="tip" role="presentation"></div>
+
+<script>
+/* =========================================================
+   DATOS — transcritos de Camashow_Masterclass_Final.xlsx
+   Hojas usadas: «2. Día 1» y «3. Día 2».
+   Las horas se calculan igual que en el Excel:
+   inicio 8:00 a. m. + suma acumulada de duraciones.
+   ========================================================= */
+const DAYS = [
+  {
+    id: "dia-1", n: 1,
+    lettering: { src: "assets/itinerario-dia-1.webp", w: 2144, h: 538 },
+    subtitle: "Fundamentos: de cero a un video completo",
+    objective: "Como creador, aprenderás el flujo completo de edición en CapCut: montaje, ritmo, recursos visuales, transiciones, música y subtítulos. Y ese mismo día pondrás en práctica todo lo aprendido creando tu propio video.",
+    block1: "Aprenderás a editar un video completo",
+    block2: "Es momento de poner en práctica todo lo que aprendiste y demostrar tu creatividad",
+    awards: "5:30 p. m.",
+    nightLabel: "Noche · Premiaciones",
+    guest: "PHOTOBOX",
+    items: [
+      { j:"Mañana", name:"Llegada y registro de creadores", dur:30, act:"Te esperamos hasta las 8:30 a. m. para que te registres y te acomodes.", res:"Empiezas a tiempo y con todo listo." },
+      { j:"Mañana", name:"Bienvenida de Camashow y explicación del día 1", dur:15, act:"Camashow te da la bienvenida y te cuenta todo lo que vivirás hoy.", res:"Sabes qué te espera y cómo vas a aprovechar la jornada." },
+      { j:"Mañana", name:"Historia de Camashow", dur:15, act:"Un relato cercano y conversacional, sin diapositivas cargadas.", res:"Descubres que ella también empezó desde cero." },
+      { j:"Mañana", name:"Conversación con los creadores", dur:20, act:"Camashow conversa con 3 o 4 creadores y cierra con una reflexión sobre autenticidad y diferenciación.", res:"Reflexionas sobre tu identidad como creador." },
+      { j:"Mañana", name:"Invitado especial: charla de esquemas de iluminación", guest:"PHOTOBOX", dur:30, act:"PHOTOBOX te muestra esquemas de iluminación para tus contenidos.", res:"Conoces esquemas de iluminación que podrás aplicar en tus contenidos.", key:true },
+      { j:"Mañana", name:"Preparación del proyecto", dur:20, act:"Recibes el material y creas tu proyecto.", tools:["Nuevo proyecto","importar","línea de tiempo","relación de aspecto"], res:"Tienes el material y tu proyecto listos para editar." },
+      { j:"Mañana", name:"1. Edición y montaje", module:true, dur:35, act:"Camashow te muestra cada paso y tú lo replicas en tu celular.", tools:["Dividir","eliminar","recortar","reordenar"], res:"Montas tu primera secuencia de clips." },
+      { j:"Mañana", name:"2. Ritmo y dinamismo", module:true, dur:25, act:"Deja tu video sin silencios y con al menos 2 zooms.", tools:["Velocidad","zoom/animación","eliminar silencios (AutoCut)"], res:"Tu video se siente dinámico." },
+      { j:"Mañana", name:"3. Recursos visuales", module:true, dur:25, act:"Agrega B-roll encima de tu voz o de tu explicación.", tools:["Superposición","stickers","quitar fondo"], res:"Usas recursos visuales para mostrar mejor tu producto." },
+      { j:"Mañana", name:"4. Transiciones", module:true, dur:25, act:"Aplica 2 o 3 transiciones a tu video de práctica.", tools:["Transiciones"], res:"Unes tus clips con transiciones limpias." },
+      { j:"Mañana", name:"5. Música y audio", module:true, dur:25, act:"Pon música de fondo a volumen bajo y sincroniza un corte con el ritmo.", tools:["Audio","volumen","extraer audio","beats"], res:"Tu audio acompaña sin tapar tu voz." },
+      { j:"Mañana", name:"6. Texto y subtítulos", module:true, dur:35, act:"Genera subtítulos, corrígelos y ubícalos en la zona segura. Al cerrar, tendrás tu video de práctica completo.", tools:["Subtítulos automáticos","texto","animación de texto"], res:"Terminas un video de práctica de principio a fin." },
+      { j:"Almuerzo", name:"Almuerzo", dur:60 },
+      { j:"Tarde", name:"Preparación del contenido", dur:60, act:"¡Es tu momento de crear! Prepara y graba clips sobre el tema que prefieras, aplicando los conceptos y recomendaciones que aprendiste durante la jornada.", tools:["Cámara del celular"], res:"Tienes material propio para editar." },
+      { j:"Tarde", name:"Edición por parte de cada creador", dur:90, act:"Editas tu video por tu cuenta, con el apoyo de Camashow y su equipo cuando lo necesites.", tools:["Todas las de la mañana"], res:"Tu video queda editado de principio a fin." },
+      { j:"Tarde", name:"Acabados y exportación", dur:30, act:"Exporta en 1080p / 30 fps y crea la portada de tu video.", tools:["Filtros","ajustes","exportar","portada"], res:"Tu video queda listo para publicar." },
+      { j:"Tarde", name:"Corrección del contenido", dur:20, act:"Camashow y su equipo revisan tu video y te sugieren mejoras.", res:"Tu video queda revisado y ajustado antes de la entrega." },
+      { j:"Tarde", name:"Entrega de los videos finales", dur:10, act:"Entregas tu video final.", res:"Tu video queda listo para la premiación." },
+      { j:"Noche", name:"Premiaciones del día 1", dur:30, pending:"Hora tentativa", act:"Se premian los videos según los criterios del reto.", res:"Te llevas toda la motivación para el día 2.", key:true }
+    ]
+  },
+  {
+    id: "dia-2", n: 2,
+    lettering: { src: "assets/itinerario-dia-2.webp", w: 2147, h: 559 },
+    subtitle: "Transiciones top, efectos, hooks de videos y sonido",
+    objective: "Como creador, dominarás transiciones top, efectos visuales, hooks de transición y diseño sonoro para llevar tus videos al siguiente nivel y aplicar todo lo aprendido en tus propias creaciones audiovisuales.",
+    block1: "Edición avanzada",
+    block2: "Es momento de poner en práctica todo lo que aprendiste y demostrar tu creatividad",
+    awards: "5:30 p. m.",
+    nightLabel: "Noche · Gran premiación y clausura",
+    guest: "VALECITAHU",
+    items: [
+      { j:"Mañana", name:"Llegada y registro de creadores", dur:30, act:"Te esperamos hasta las 8:30 a. m. para que te registres y te acomodes.", res:"Empiezas a tiempo y con todo listo." },
+      { j:"Mañana", name:"Bienvenida de Camashow y explicación del día 2", dur:30, act:"Camashow te da la bienvenida a la segunda jornada.", res:"Recargas energía con el grupo y conectas lo que aprendiste el día 1 con el día 2." },
+      { j:"Mañana", name:"1. Transiciones top", module:true, dur:60, act:"Camashow te muestra cada transición y tú la replicas.", tools:["Transiciones","keyframes","máscaras"], res:"Dominas 6 transiciones llamativas." },
+      { j:"Mañana", name:"2. Efectos", module:true, dur:50, act:"Replica 3 o 4 efectos en un clip de práctica.", tools:["Keyframes","máscaras","seguimiento","curva de velocidad","croma","efectos"], res:"Le das un acabado profesional a tus videos." },
+      { j:"Mañana", name:"3. Hooks de transiciones", module:true, dur:40, act:"Aprendes hooks de transiciones y los aplicas en un clip de práctica.", tools:["Texto en pantalla","cortes rápidos"], res:"Tus videos enganchan desde el inicio." },
+      { j:"Mañana", name:"4. Diseño sonoro", module:true, dur:45, act:"Agrega efectos de sonido a tus cortes, transiciones y textos.", tools:["Efectos de sonido","beats","ajustes de audio","mejora de voz"], res:"El sonido refuerza tu mensaje." },
+      { j:"Mañana", name:"5. Animación y superposición en Canva", module:true, dur:45,
+        steps:["Inspiración: busca referencias visuales en Pinterest.","Composición gráfica: arma tu imagen en Canva, con sus elementos gráficos y superposiciones.","Animación: lleva tu composición a CapCut y dale movimiento con sus herramientas."],
+        tools:["Pinterest","Canva","CapCut"], toolsLabel:"Herramientas", res:"Creas una imagen o composición visual con movimiento, construida en Canva y animada en CapCut." },
+      { j:"Almuerzo", name:"Almuerzo", dur:60 },
+      { j:"Tarde", name:"Grabación de videos", dur:60, act:"Es tu momento de crear. Graba tu propio material y elige libremente qué quieres producir: tu producto, tu marca o el tema que prefieras. Visita los stands, encuentra inspiración y dale vida a tus ideas con las técnicas de la mañana: transiciones top, efectos y recursos audiovisuales, hooks de transiciones y recursos sonoros.", tools:["iPhones","soportes de grabación"], toolsLabel:"Recursos disponibles", res:"Tienes material propio para editar." },
+      { j:"Tarde", name:"Edición con apoyo", dur:120, act:"Editas con el apoyo de Camashow y su equipo. Al finalizar (5:00 p. m.), exportas y entregas tu video.", tools:["Todas las de la mañana"], res:"Tu video, con acabado profesional, queda entregado para la premiación." },
+      { j:"Tarde", name:"Charla de la invitada especial", guest:"VALECITAHU", dur:30, act:"Una intervención inspiradora en la que conocerás su experiencia y sus conocimientos prácticos sobre crecimiento digital y monetización.",
+        tools:["Su experiencia personal en la creación de contenido","Cómo las redes sociales la ayudaron a llegar a donde está hoy","Cómo monetizar en Facebook","Cómo potenciar un emprendimiento a través de las redes sociales","Su perspectiva sobre la creación de contenido digital"], toolsLabel:"Temas de la charla",
+        res:"Inspiración: una mirada externa sobre la creación de contenido.", key:true },
+      { j:"Noche", name:"Gran premiación y clausura del evento Camashow", dur:30, pending:"Hora tentativa",
+        steps:["Proyección y revisión de los videos.","Gran premiación final.","Entrega del super sorteo del viaje con la agencia Dos Almas.","Mensaje final de Camashow."],
+        res:"Al finalizar CAMASHOW MASTERCLASS 2.0, te llevas herramientas prácticas, nuevos recursos y conocimientos para crear contenido audiovisual de calidad y aplicarlos en tus propios proyectos, contenidos y emprendimientos.", key:true }
+    ]
+  }
+];
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+const START_MIN = 8 * 60;                    // =TIME(8,0,0)
+const GENERAL_END = 18 * 60;                 // horario oficial de la jornada: 8:00 a. m. – 6:00 p. m.
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+function clock(min) {                         // 600 -> { h:"10:00", m:"a. m." }
+  const h24 = Math.floor(min / 60), mm = String(min % 60).padStart(2, "0");
+  const h12 = ((h24 + 11) % 12) + 1;
+  return { h: `${h12}:${mm}`, m: h24 < 12 ? "a. m." : "p. m." };
+}
+const fmt = min => { const c = clock(min); return `${c.h} ${c.m}`; };
+const durTxt = d => d >= 60 ? (d % 60 ? `${Math.floor(d/60)} h ${d%60} min` : `${d/60} h`) : `${d} min`;
+
+/* Calcula inicio/fin y numeración (igual que la columna # del Excel: el almuerzo no se numera) */
+DAYS.forEach(day => {
+  let t = START_MIN, num = 0;
+  day.items.forEach(it => {
+    it.start = t; it.end = t + it.dur; t = it.end;
+    if (it.j !== "Almuerzo") it.num = ++num;
+  });
+  day.end = t;
+  day.count = num;
+  day.hours = day.items.filter(i => i.j !== "Almuerzo").reduce((a, i) => a + i.dur, 0) / 60;
+});
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+function itemHTML(it, dayN) {
+  const s = clock(it.start);
+  const cls = ["item", it.module && "item--module", it.key && "item--key"].filter(Boolean).join(" ");
+  const tags = [
+    `<span class="tag tag--dur">${durTxt(it.dur)}</span>`,
+    it.guest ? `<span class="tag tag--guest">${esc(it.guest)}</span>` : "",
+    it.status === "Sugerido" ? `<span class="tag tag--pending" title="Estado en el Excel: Sugerido (propuesta para validar)">Sugerido</span>` : "",
+    it.pending ? `<span class="tag tag--pending">${esc(it.pending)}</span>` : ""
+  ].join("");
+  const activity = [
+    it.act ? `<p>${esc(it.act)}</p>` : "",
+    it.steps ? `<ol class="item__steps">${it.steps.map(st => `<li>${esc(st)}</li>`).join("")}</ol>` : ""
+  ].join("");
+  const tools = it.tools ? `<div><h4>${esc(it.toolsLabel || "Herramientas de CapCut")}</h4><div class="chips">${it.tools.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div></div>` : "";
+  const label = it.module ? it.name.replace(/^(\d+)\.\s*/, '<span class="item__num">$1.</span>') : esc(it.name);
+  return `
+  <li class="${cls}" id="d${dayN}-i${it.num}">
+    <details>
+      <summary>
+        <span class="item__time">
+          <span class="item__start">${s.h}<small>${s.m}</small></span>
+          <span class="item__end">hasta ${fmt(it.end)}</span>
+        </span>
+        <span class="item__dot" aria-hidden="true"></span>
+        <span class="item__main">
+          <span class="item__name">${label}</span>
+          <span class="item__tags">${tags}</span>
+        </span>
+        <span class="item__chev" aria-hidden="true"><svg><use href="#i-chev"/></svg></span>
+      </summary>
+      <div class="item__body">
+        <div><h4>Actividad</h4>${activity}</div>
+        ${tools}
+        <div><h4>Resultado esperado</h4><p>${esc(it.res)}</p></div>
+      </div>
+    </details>
+  </li>`;
+}
+
+function groupHTML(items, dayN, label) {
+  return `${label ? `<div class="phase-label"><span class="eyebrow">${label}</span></div>` : ""}
+          <ol class="items">${items.map(it => itemHTML(it, dayN)).join("")}</ol>`;
+}
+
+function spanHTML(day) {
+  const total = day.end - START_MIN;
+  const segs = day.items.map(it => {
+    const w = (it.dur / total * 100).toFixed(3);
+    const target = it.num ? `d${day.n}-i${it.num}` : "";
+    return `<button type="button" class="span__seg" style="flex-basis:${w}%" data-j="${it.j}" data-target="${target}"
+              data-name="${esc(it.guest && !it.name.includes(it.guest) ? `${it.name} · ${it.guest}` : it.name)}" data-time="${fmt(it.start)} – ${fmt(it.end)}"
+              aria-label="${esc(it.name)}, ${fmt(it.start)} a ${fmt(it.end)}" ${it.j === "Almuerzo" ? 'tabindex="-1"' : ""}></button>`;
+  }).join("");
+  const ticks = [8, 10, 12, 14, 16, 18].map(h => {
+    const left = ((h * 60 - START_MIN) / total * 100).toFixed(2);
+    return `<span style="left:${left}%">${fmt(h * 60).replace(":00", "")}</span>`;
+  }).join("");
+  return `
+  <div class="span reveal" role="group" aria-label="Distribución de la jornada del día ${day.n}">
+    <div class="span__track">${segs}</div>
+    <div class="span__ticks" aria-hidden="true">${ticks}</div>
+    <div class="span__legend" aria-hidden="true">
+      <span><i style="background:linear-gradient(#fbdcea,#f5c4da)"></i>Mañana</span>
+      <span><i style="background:repeating-linear-gradient(135deg,#fff 0 3px,#f4d6e5 3px 6px);box-shadow:0 0 0 1px #f4d6e5 inset"></i>Almuerzo</span>
+      <span><i style="background:linear-gradient(#e2effd,#c6dff8)"></i>Tarde</span>
+      <span><i style="background:linear-gradient(120deg,#f7c9de,#e2d3f9,#bcdaf6)"></i>Noche · Premiaciones</span>
+    </div>
+  </div>`;
+}
+
+function dayHTML(day) {
+  const am = day.items.filter(i => i.j === "Mañana");
+  const pm = day.items.filter(i => i.j === "Tarde");
+  const night = day.items.filter(i => i.j === "Noche");
+  const lunch = day.items.find(i => i.j === "Almuerzo");
+  const mirror = day.n % 2 === 0;
+  return `
+  <section class="day day--${day.n}${mirror ? " day--mirror" : ""}" id="${day.id}" aria-labelledby="${day.id}-t">
+    <div class="wrap">
+      <div class="day__head reveal">
+        <div class="day__title-block">
+          <span class="eyebrow">Día ${day.n}</span><br>
+          <h2 class="day__title" id="${day.id}-t">
+            <span class="lettering" data-light>
+              <img class="lettering__base" src="${day.lettering.src}" width="${day.lettering.w}" height="${day.lettering.h}" alt="Itinerario día ${day.n}">
+              <img class="lettering__iris" src="${day.lettering.src}" alt="" aria-hidden="true">
+              <img class="lettering__sheen" src="${day.lettering.src}" alt="" aria-hidden="true">
+            </span>
+          </h2>
+          <p class="day__subtitle">${esc(day.subtitle)}</p>
+        </div>
+        <div class="day__intro">
+          <span class="eyebrow">Objetivo</span>
+          <p class="day__objective">${esc(day.objective)}</p>
+          <dl class="facts">
+            <div><dt>Horario</dt><dd>${fmt(START_MIN)} – ${fmt(GENERAL_END)}</dd></div>
+            <div><dt>Bloques</dt><dd>${day.count}</dd></div>
+            <div><dt>Sin almuerzo</dt><dd>${day.hours} h</dd></div>
+            <div><dt>Invitado</dt><dd>${esc(day.guest)}</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      ${spanHTML(day)}
+
+      <div class="board">
+        <article class="block reveal" aria-label="Bloque 1, mañana">
+          <header class="block__head">
+            <div><span class="eyebrow">Bloque 1 · Mañana</span><h3 class="block__name">${esc(day.block1)}</h3></div>
+            <span class="block__hours">${fmt(am[0].start)} – ${fmt(am[am.length-1].end)}</span>
+          </header>
+          ${groupHTML(am, day.n)}
+          <div class="block__foot"><button type="button" class="toggle-all" aria-pressed="false">Ver detalles</button></div>
+        </article>
+
+        <div class="lunch" aria-label="Almuerzo, ${fmt(lunch.start)} a ${fmt(lunch.end)}">
+          <span class="lunch__pill"><b>Almuerzo</b>${clock(lunch.start).h} – ${fmt(lunch.end)}</span>
+        </div>
+
+        <article class="block reveal" aria-label="Bloque 2, tarde y premiaciones">
+          <header class="block__head">
+            <div><span class="eyebrow">Bloque 2 · Tarde</span><h3 class="block__name">${esc(day.block2)}</h3></div>
+            <span class="block__hours">${fmt(pm[0].start)} – ${fmt(night[night.length-1].end)}</span>
+          </header>
+          ${groupHTML(pm, day.n)}
+          ${groupHTML(night, day.n, `${day.nightLabel} · ${day.awards}`)}
+          <div class="block__foot"><button type="button" class="toggle-all" aria-pressed="false">Ver detalles</button></div>
+        </article>
+      </div>
+    </div>
+  </section>`;
+}
+
+document.getElementById("days").innerHTML =
+  DAYS.map(dayHTML).join(`<div class="divider wrap" aria-hidden="true"><svg><use href="#i-sparkle"/></svg></div>`);
+document.body.classList.remove("no-js");
+
+/* =========================================================
+   INTERACCIÓN
+   ========================================================= */
+// Expandir / contraer todos los ítems de un bloque
+document.querySelectorAll(".toggle-all").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-pressed") !== "true";
+    btn.closest(".block").querySelectorAll("details").forEach(d => d.open = open);
+    btn.setAttribute("aria-pressed", open);
+    btn.textContent = open ? "Ocultar detalles" : "Ver detalles";
+  });
+});
+
+// Barra de jornada: tooltip y salto al ítem
+const tip = document.getElementById("tip");
+document.querySelectorAll(".span__seg").forEach(seg => {
+  const target = seg.dataset.target && document.getElementById(seg.dataset.target);
+  const show = e => {
+    tip.innerHTML = `${seg.dataset.name}<small>${seg.dataset.time}</small>`;
+    const r = seg.getBoundingClientRect();
+    tip.style.left = Math.min(Math.max(r.left + r.width / 2, 150), innerWidth - 150) + "px";
+    tip.style.top = r.top + "px";
+    tip.classList.add("is-on");
+    if (target) target.classList.add("is-hot");
+  };
+  const hide = () => { tip.classList.remove("is-on"); if (target) target.classList.remove("is-hot"); };
+  let lastPointer = "mouse";
+  seg.addEventListener("pointerdown", e => { lastPointer = e.pointerType; });
+  seg.addEventListener("mouseenter", () => { if (lastPointer !== "touch") show(); });
+  seg.addEventListener("mouseleave", () => { if (lastPointer !== "touch") hide(); });
+  seg.addEventListener("focus", show);
+  seg.addEventListener("blur", hide);
+  seg.addEventListener("click", () => {
+    if (lastPointer === "touch") {         // táctil: pulsar muestra la información; pulsar fuera la cierra
+      tip.dataset.owner === seg.dataset.time && tip.classList.contains("is-on") ? hide() : show();
+      tip.dataset.owner = seg.dataset.time;
+      lastPointer = "mouse";
+      return;
+    }
+    if (!target) return;                   // cursor: además lleva a la actividad y la despliega
+    hide();
+    target.querySelector("details").open = true;
+    target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  });
+});
+addEventListener("scroll", () => tip.classList.remove("is-on"), { passive: true });
+document.addEventListener("pointerdown", e => {
+  if (!e.target.closest(".span__seg")) {
+    tip.classList.remove("is-on");
+    document.querySelectorAll(".item.is-hot").forEach(el => el.classList.remove("is-hot"));
+  }
+});
+
+// Navegación: aparece tras la portada y marca el día visible
+const nav = document.querySelector(".nav");
+const links = [...document.querySelectorAll(".nav__link")];
+new IntersectionObserver(([e]) => nav.classList.toggle("is-visible", !e.isIntersecting), { threshold: .25 })
+  .observe(document.querySelector(".hero"));
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.setAttribute("aria-current", l.hash === "#" + e.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll(".day").forEach(s => spy.observe(s));
+
+// Luz holográfica: el reflejo iridiscente del lettering y de las tarjetas sigue al puntero
+if (matchMedia("(hover: hover)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const pct = (v, a, b) => (Math.max(-20, Math.min(120, (v - a) / b * 100))).toFixed(1) + "%";
+  document.querySelectorAll("[data-light]").forEach(el => {
+    const host = el.closest("header, section") || el;
+    host.addEventListener("pointermove", e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", pct(e.clientX, r.left, r.width));
+      el.style.setProperty("--my", pct(e.clientY, r.top, r.height));
+    }, { passive: true });
+  });
+  document.querySelectorAll("[data-foil]").forEach(el => {
+    el.addEventListener("pointermove", e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+      el.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+      el.style.setProperty("--foil-rot", (160 + x * 120).toFixed(0) + "deg");
+      el.style.setProperty("--sheen-x", (100 - x * 100).toFixed(1) + "%");
+    }, { passive: true });
+    el.addEventListener("pointerleave", () => ["--mx", "--my", "--foil-rot", "--sheen-x"].forEach(p => el.style.removeProperty(p)));
+  });
+}
+
+// Entrada suave de los bloques
+const rv = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-in"); rv.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll(".reveal").forEach(el => rv.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Solo se publica la página web (index.html + las imágenes que usa).
+# El material de trabajo se queda en tu computador y NO se sube ni se publica en Netlify.
+
+# Material de trabajo
+Presentacion/
+respaldos/
+*.xlsx
+*.pptx
+
+# Imágenes de referencia que la página no usa
+Imagenes de referencia/*
+!Imagenes de referencia/Escenario pastel con cintas holográficas.png
+!Imagenes de referencia/Fondo holográfico rosa pastel con destellos.png
+
+# Archivos del sistema y del editor
+.claude/
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
